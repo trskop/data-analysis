@@ -47,6 +47,8 @@ module DataAnalysis
 
     , module Control.Lens
     , module Data.Default.Class
+    , module Data.Monoid.Endo
+    , module Data.Monoid.Endo.Fold
 
     , module DataAnalysis.Decode
     , module DataAnalysis.Encode
@@ -108,6 +110,8 @@ import Control.Lens
 import Data.Default.Class
 import Data.Default.Instances.Base ()
 import Data.Default.Instances.Containers ()
+import Data.Monoid.Endo
+import Data.Monoid.Endo.Fold
 
 import DataAnalysis.Decode
 import DataAnalysis.Encode

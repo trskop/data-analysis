@@ -78,6 +78,7 @@ library
     -- ^ For Prelude only.
     , data-default-instances-containers == 0.0.*
     -- ^ For Prelude only.
+    , endo ==0.2.* || ==0.3.*
     , lens ==4.*
     -- ^ Kind of arbitrary constraint.
     , scientific ==0.3.*
