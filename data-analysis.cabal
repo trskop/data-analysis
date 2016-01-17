@@ -1,0 +1,83 @@
+name:                   data-analysis
+version:                0.1.0.0
+synopsis:               TODO
+-- description:
+homepage:               https://github.com/trskop/data-analysis
+bug-reports:            https://github.com/trskop/data-analysis/issues
+license:                BSD3
+license-file:           LICENSE
+author:                 Peter Trško
+maintainer:             peter.trsko@gmail.com
+copyright:              (c) 2016, Peter Trško
+category:               Data, Math
+build-type:             Simple
+cabal-version:          >=1.10
+
+extra-source-files:
+    ChangeLog.md
+  , README.md
+
+flag pedantic
+  description:          Pass additional warning flags to GHC.
+  default:              False
+  manual:               True
+
+library
+  hs-source-dirs:       src
+  exposed-modules:
+      DataAnalysis
+    , DataAnalysis.Class.FromSample
+    , DataAnalysis.Class.HasMaxSample
+    , DataAnalysis.Class.HasMinSample
+    , DataAnalysis.Decode
+    , DataAnalysis.Decode.Aeson
+    , DataAnalysis.Decode.Cassava
+    , DataAnalysis.Decode.Class
+    , DataAnalysis.Encode
+    , DataAnalysis.Encode.Aeson
+    , DataAnalysis.Encode.Class
+    , DataAnalysis.MaxSample
+    , DataAnalysis.Mean
+    , DataAnalysis.MinSample
+    , DataAnalysis.Range
+    , DataAnalysis.Sortable.Class
+    , DataAnalysis.Sortable.Vector
+    , DataAnalysis.Type
+    , DataAnalysis.Type.Encoding
+  -- other-modules:
+
+  default-language:     Haskell2010
+  other-extensions:
+      DeriveDataTypeable
+    , DeriveGeneric
+    , FlexibleInstances
+    , FunctionalDependencies
+    , MultiParamTypeClasses
+    , NoImplicitPrelude
+
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , vector >=0.6 && <0.12
+    -- ^ Same bounds as vector-algorithms package uses.
+    , text
+
+    , aeson
+    , aeson-pretty
+    , between >=0.11 && <1
+    , cassava
+    , data-default-class ==0.0.*
+    , lens ==4.*
+    -- ^ Kind of arbitrary constraint.
+    , tagged-exception-core >=2.1 && <3
+    , vector-algorithms >=0.7 && <1
+    -- ^ Kind of arbitrary constraint.
+
+  if impl(GHC <7.11)
+    build-depends:      semigroups >=0.18 && <0.19
+
+  ghc-options:          -Wall -fwarn-tabs
+  if flag(pedantic)
+    ghc-options:
+      -fwarn-implicit-prelude
+--    -Werror
